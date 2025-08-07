@@ -57,6 +57,7 @@ if ingredient_list:
         st.write(smoothiefroot_response.json())
 
         a = pd.DataFrame.from_dict(smoothiefroot_response.json())
+        st.write('pandas dataframe')
         st.dataframe(a)
 
         sf_df = st.dataframe(smoothiefroot_response.json() , use_container_width=True)
