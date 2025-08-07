@@ -16,8 +16,7 @@ st.write(
 cnx = st.connection('snowflake')
 session = cnx.session()    # get_active_session()
 
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response)
+
 
 name_on_order = st.text_input('Name on Smoothie:')
 # Currently no apostrophes tolerated in name
@@ -54,3 +53,9 @@ if ingredient_list:
     if time_to_insert:
         session.sql(my_insert_stmt).collect()
         st.success(f'Your Smoothie is ordered, {name_on_order}!' , icon = '✅')
+
+
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.write(smoothiefroot_response.json())
+
+sf_df = st.dataframe(smoothiefroot_response.json() , use_container_width=True)
