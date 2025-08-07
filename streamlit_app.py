@@ -52,17 +52,16 @@ if ingredient_list:
         st.write(f'The search value for "{fruit_chosen}" is "{search_on}".')
 
 
-        st.subheader(fruit_chosen + 'Nutrition Information:')
+        st.subheader(fruit_chosen + ' Nutritional Information:')
         smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
         st.write(smoothiefroot_response.json())
 
         a = pd.DataFrame.from_dict(smoothiefroot_response.json())
         st.write('pandas dataframe')
-        a.index.rename('nutrients' , inplace= True)
-        a.reset_index(inplace=True)
+        a.index.rename('nutrients' , inplace= True).reset_index(inplace=True)
         a['nutrients'] = a['nutrients'].str.title()
         a.drop(columns = ['family' , 'genus' , 'id' , 'name' , 'order'], inplace = True)
-        st.dataframe(a)
+        st.dataframe(a , hide_index=True)
 
         sf_df = st.dataframe(smoothiefroot_response.json() , use_container_width=True)
 
@@ -73,7 +72,6 @@ if ingredient_list:
 
     # st.write(my_insert_stmt)
     # st.stop()       # GOOD FOR HALTING EXECUTION , DEBUGGING
-    
 
     time_to_insert = st.button('Submit Order')
 
