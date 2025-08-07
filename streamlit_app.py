@@ -42,7 +42,7 @@ if ingredient_list:
     my_insert_stmt = """INSERT INTO smoothies.public.orders(ingredients , name_on_order) 
                         VALUES ('""" + ingredient_string + """','""" + name_on_order + """ ')"""
 
-    st.write(my_insert_stmt)
+    # st.write(my_insert_stmt)
     # st.stop()       # GOOD FOR HALTING EXECUTION , DEBUGGING
     
 
