@@ -58,7 +58,7 @@ if ingredient_list:
 
         a = pd.DataFrame.from_dict(smoothiefroot_response.json())
         st.write('pandas dataframe')
-        a.index.rename('Nutrients')
+        a.index.rename('Nutrients' , inplace= True)
         a.reset_index(inplace=True)
         st.dataframe(a)
 
