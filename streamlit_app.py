@@ -58,7 +58,8 @@ if ingredient_list:
         st.write(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
         smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
         
-
+        st.write(smoothiefroot_response.json())
+        
         a = pd.DataFrame.from_dict(smoothiefroot_response.json())
 
         a.index.rename('nutrients' , inplace= True)
@@ -66,7 +67,7 @@ if ingredient_list:
         a['nutrients'] = a['nutrients'].str.title()
         a.drop(columns = ['family' , 'genus' , 'id' , 'name' , 'order'], inplace = True)
         st.dataframe(a , hide_index=True)
-        st.write(smoothiefroot_response.json())
+        
 
         # sf_df = st.dataframe(smoothiefroot_response.json() , use_container_width=True)
 
