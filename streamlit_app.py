@@ -61,7 +61,7 @@ if ingredient_list:
         a.index.rename('nutrients' , inplace= True)
         a.reset_index(inplace=True)
         a['nutrients'] = a['nutrients'].str.title()
-        a.drop(columns = ['family' , 'genus' , 'id' , 'name' , 'order'])
+        a.drop(columns = ['family' , 'genus' , 'id' , 'name' , 'order'], inplace = True)
         st.dataframe(a)
 
         sf_df = st.dataframe(smoothiefroot_response.json() , use_container_width=True)
