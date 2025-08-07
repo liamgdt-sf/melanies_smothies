@@ -26,7 +26,7 @@ session = cnx.session()    # get_active_session()
 name_on_order = st.text_input('Name on Smoothie:')
 # Currently no apostrophes tolerated in name
 
-st.write('The name on your Smoothie will be :' , name_on_order)
+st.write(f'The name on your Smoothie will be : "{name_on_order}"')
 
 
 my_dataframe = session.table('smoothies.public.fruit_options'
