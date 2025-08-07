@@ -59,7 +59,7 @@ if ingredient_list:
         a = pd.DataFrame.from_dict(smoothiefroot_response.json())
         st.write('pandas dataframe')
         a.index.rename('Nutrients')
-        a.reset_index()
+        a.reset_index(inplace=True)
         st.dataframe(a)
 
         sf_df = st.dataframe(smoothiefroot_response.json() , use_container_width=True)
