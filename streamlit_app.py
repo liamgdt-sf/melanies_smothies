@@ -53,6 +53,7 @@ if ingredient_list:
 
 
         st.subheader(fruit_chosen + ' Nutritional Information:')
+        st.write(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
         smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
         
 
