@@ -55,14 +55,12 @@ if ingredient_list:
 
         search_on = quote(search_on)
         st.subheader(fruit_chosen + ' Nutritional Information:')
-        st.write(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
         smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
         
         st.write(smoothiefroot_response.json())
 
         try:
           a = pd.DataFrame.from_dict(smoothiefroot_response.json())
-          st.dataframe(a , hide_index=True)
           a.index.rename('nutrients' , inplace= True)
           a.reset_index(inplace=True)
           a['nutrients'] = a['nutrients'].str.title()
