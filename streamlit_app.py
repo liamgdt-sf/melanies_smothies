@@ -1,6 +1,6 @@
 # Import python packages
 import streamlit as st
-
+import requests
 # from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col 
 
@@ -15,6 +15,9 @@ st.write(
 
 cnx = st.connection('snowflake')
 session = cnx.session()    # get_active_session()
+
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
 
 name_on_order = st.text_input('Name on Smoothie:')
 # Currently no apostrophes tolerated in name
